@@ -12,5 +12,5 @@ import curso.gestionAcademia.plantillas.Asignatura;
  */
 public interface MetodosAsignaturas {
     void cargaAsignatura( Asignatura asignatura );
-    void eliminarAsignatura( Integer idAsignatura );
+    void eliminarAsignatura( Asignatura asignatura );
 }

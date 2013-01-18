@@ -14,10 +14,10 @@ public class Alumno extends Persona implements MetodosAsignaturas {
     }
 
     public void cargaAsignatura( Asignatura asignatura ) {
-        setAsignatura.add( asignatura );    
+        this.setAsignatura.add( asignatura );    
     }
 
-    public void eliminarAsignatura( Integer idAsignatura ) {
-   
+    public void eliminarAsignatura( Asignatura asignatura ) {
+        this.setAsignatura.remove( asignatura );
     }
 }
