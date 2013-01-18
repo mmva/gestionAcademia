@@ -4,7 +4,7 @@ import curso.gestionAcademia.util.Constantes;
 import curso.gestionAcademia.util.Secuencial;
 
 public class Asignatura {
-    private long idAsignatura;
+    private Integer idAsignatura;
     private String nombre;
     private String tipo; // INF, IDI
     private int horasSemana;
@@ -20,7 +20,7 @@ public class Asignatura {
     }
 
     // Funciones para la recuperacion de la informacion del objeto
-    public long getIdAsignatura() {
+    public Integer getIdAsignatura() {
         return idAsignatura;
     }
    
