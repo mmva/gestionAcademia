@@ -1,7 +1,6 @@
 package curso.gestionAcademia.plantillas;
 
 import curso.gestionAcademia.util.Secuencial;
-import java.util.ArrayList;
 
 public class Asignatura {
     private long idAsignatura;
@@ -9,8 +8,6 @@ public class Asignatura {
     private String tipo; // INF, IDI
     private int horasSemana;
     private String idAula;
-    private ArrayList<String> temario = new ArrayList<String>();
-    private ArrayList<String> bibliografia = new ArrayList<String>();
     
     // Constructor
     public Asignatura(String nombre, String tipo, int horasSemana){
@@ -38,26 +35,8 @@ public class Asignatura {
         return idAula;
     }
 
-    public ArrayList getTemario() {
-        return temario;
-    }
-
-    public ArrayList getBibliografia() {
-        return bibliografia;
-    }
-
     // Establecemos el aula
     public void setIdAula(String idAula) {
         this.idAula = idAula;
-    }
-    
-    // Agregamos temario
-    public void agregarTema(String tema){
-        this.temario.add(tema);
-    }
-    
-    // Agregamos bibliografia
-    public void agregarBibliografia(String libro){
-        this.bibliografia.add(libro);
     }
 }
