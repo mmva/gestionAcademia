@@ -1,43 +1,55 @@
 package curso.gestionAcademia.plantillas;
 
 import curso.gestionAcademia.interfaces.ElementosAcademia;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Academia implements ElementosAcademia{
     Integer idAcademia;
     String nombreAcademia;
     String direccionAcademia;
-
-    public Map cargaAsignaturaAcademia(Asignatura asignatura) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    Map<Integer, Asignatura> mapAsignaturasAcademia;
+    Map<String, Aula> mapAulasAcademia;
+    Map<Integer, Alumno> mapAlumnosAcademia;
+    Map<Integer, Profesor> mapProfesoresAcademia;
+    
+    public Academia(){
+        this.mapAlumnosAcademia = new HashMap<Integer, Alumno>();
+        this.mapAsignaturasAcademia = new HashMap<Integer, Asignatura>();
+        this.mapAulasAcademia = new HashMap<String, Aula>();
+        this.mapProfesoresAcademia = new HashMap<Integer, Profesor>();
     }
 
-    public Map cargaAulaAcademia(Aula aula) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void cargaAsignaturaAcademia(Asignatura asignatura) {
+        this.mapAsignaturasAcademia.put(asignatura.getIdAsignatura(), asignatura);
     }
 
-    public Map cargaAlumnoAcademia(Alumno alumno) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void cargaAulaAcademia(Aula aula) {
+        this.mapAulasAcademia.put(aula.getIdAula(), aula);
     }
 
-    public Map cargaProfesorAcademia(Profesor profesor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void cargaAlumnoAcademia(Alumno alumno) {
+        this.mapAlumnosAcademia.put(alumno.getIdAlumno(), alumno);
     }
 
-    public Map eliminaAsignaturaAcademia(Integer idAcademia) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void cargaProfesorAcademia(Profesor profesor) {
+        this.mapProfesoresAcademia.put(profesor.getIdProfesor(), profesor);
     }
 
-    public Map eliminaAulaAcademia(Integer idAula) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void eliminaAsignaturaAcademia(Integer idAcademia) {
+        this.mapAsignaturasAcademia.remove(idAcademia);
     }
 
-    public Map eliminaAlumnoAcademia(Integer idAlumno) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void eliminaAulaAcademia(Integer idAula) {
+        this.mapAulasAcademia.remove(idAula);
     }
 
-    public Map eliminaProfesorAcademia(Integer idProfesor) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void eliminaAlumnoAcademia(Integer idAlumno) {
+        this.mapAlumnosAcademia.remove(idAlumno);
+    }
+
+    public void eliminaProfesorAcademia(Integer idProfesor) {
+        this.mapProfesoresAcademia.remove(idProfesor);
     }
     
 }

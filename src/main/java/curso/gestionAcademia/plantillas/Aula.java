@@ -16,11 +16,15 @@ public class Aula implements MetodosAsignaturas {
         this.asignaturasAula = new HashSet();
     }
 
+    public String getIdAula() {
+        return idAula;
+    }
+
     public void cargaAsignatura(Asignatura asignatura) {
         this.asignaturasAula.add(asignatura);
     }
 
-    public void eliminarAsignatura(Integer idAsignatura) {
-        this.asignaturasAula.remove(this);
+    public void eliminarAsignatura(Asignatura asignatura) {
+        this.asignaturasAula.remove(asignatura);
     }
 }
