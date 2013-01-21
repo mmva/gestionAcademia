@@ -18,6 +18,14 @@ public class Profesor extends Persona implements MetodosAsignaturas {
     public Integer getIdProfesor() {
         return idProfesor;
     }
+    
+    public void mostrarAsignaturas() {
+        System.out.println( "\nASIGNATURAS PROFESOR" ); 
+        System.out.println( "\nid\tnombre\ttipo\thoras semanales" ); 
+        for ( Asignatura asig : setAsignatura ) {
+            System.out.println( asig.getIdAsignatura() + "\t" + asig.getNombre() + "\t" + asig.getTipo() + "\t" + asig.getHorasSemana() );
+        }
+    }
 
     public void cargaAsignatura(Asignatura asignatura) {
         this.setAsignatura.add( asignatura );

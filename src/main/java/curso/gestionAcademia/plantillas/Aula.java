@@ -29,6 +29,14 @@ public class Aula implements MetodosAsignaturas {
     public boolean getTieneProyector() {
         return this.tieneProyector;
     }
+    
+    public void mostrarAsignaturas() {
+        System.out.println( "\nASIGNATURAS AULA" ); 
+        System.out.println( "\nid\tnombre\ttipo\thoras semanales" ); 
+        for ( Asignatura asig : asignaturasAula ) {
+            System.out.println( asig.getIdAsignatura() + "\t" + asig.getNombre() + "\t" + asig.getTipo() + "\t" + asig.getHorasSemana() );
+        }
+    }
 
     public void cargaAsignatura(Asignatura asignatura) {
         this.asignaturasAula.add(asignatura);

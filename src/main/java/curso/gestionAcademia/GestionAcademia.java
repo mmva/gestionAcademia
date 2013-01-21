@@ -16,8 +16,10 @@ public final class GestionAcademia {
         entrada = new Scanner( System.in );
         /*academia.cargaAlumnoAcademia( new Alumno( "Alberto", "Csdfdsf" ) );
         academia.cargaProfesorAcademia( new Profesor( "Juan", "sdsddddddd" ) );
-        academia.cargaAulaAcademia( new Aula( 25, true ) ); 
-        academia.cargaAsignaturaAcademia( new Asignatura( "Java", "INF", 50 ) ); */
+        academia.cargaAulaAcademia( new Aula( 25, true ) ); */
+        academia.cargaAsignaturaAcademia( new Asignatura( "Java", "INF", 50 ) ); 
+        academia.cargaAsignaturaAcademia( new Asignatura( "Frances", "IDI", 10 ) ); 
+        academia.cargaAsignaturaAcademia( new Asignatura( "Ingles", "IDI", 23 ) ); 
         mostrarMenu();
     }
     
@@ -114,22 +116,59 @@ public final class GestionAcademia {
     }
     
     public void insertarProfesor() {
+        int opcion;
         System.out.println( "- FORMULARIO PROFESOR -" );
         System.out.print( "Introduzaca un nombre: " );
         String nombreProfesor = entrada.next();
-        System.out.print( "Introduzaca una direccion " );
+        System.out.print( "Introduzaca una direccion: " );
         String direccionProfesor = entrada.next();
         Profesor profesor = new Profesor( nombreProfesor, direccionProfesor );
+        
+        // Asignar asignatura a profesor
+        System.out.println( "ASIGNATURAS DISPONIBLES PARA ASIGNAR" );
+        do {
+            mostrarAsignaturas();
+            System.out.print( "ESCRIBA EL CÓDIGO DE LA ASIGNATURA O < 0 > PARA SALIR: " );
+            opcion = entrada.nextInt();
+            // Si la clave escrita es correcta se realiza la matriculación
+            if ( opcion != 0 && academia.mapAsignaturasAcademia.containsKey( opcion ) ) {
+                // Añadir la asignatura al profesor
+                Asignatura asignatura = academia.mapAsignaturasAcademia.get( opcion );
+                profesor.cargaAsignatura( asignatura );
+                asignatura.setProfesor( profesor ); 
+                academia.cargaAsignaturaAcademia( asignatura );
+            }
+        } while ( opcion != 0 ); 
+        // Se carga el profesor a la base de datos Academia
         academia.cargaProfesorAcademia( profesor );  
     }
     
     public void insertarAula() {
+        int opcion;
         System.out.println( "- FORMULARIO AULA -" );
         System.out.print( "Introduzca la capacidad del aula: " );
         int capacidad = entrada.nextInt();
         System.out.print( "Tiene proyector < true / false >: " );
         boolean tieneProyector = entrada.nextBoolean();
         Aula aula = new Aula( capacidad, tieneProyector );
+        
+        // Insertar asignatura al aula
+        System.out.println( "ASIGNATURAS DISPONIBLES PARA ASIGNAR AL AULA" );
+        do {
+            mostrarAsignaturas();
+            System.out.print( "ESCRIBA EL CÓDIGO DE LA ASIGNATURA O < 0 > PARA SALIR: " );
+            opcion = entrada.nextInt();
+            // Si la clave escrita es correcta se asigna la asignatura al aula
+            if ( opcion != 0 && academia.mapAsignaturasAcademia.containsKey( opcion ) ) {
+                // Añadir la asignatura al aula
+                Asignatura asignatura = academia.mapAsignaturasAcademia.get( opcion );
+                aula.cargaAsignatura( asignatura );
+                //asignatura.setAula( aula );
+                // Se carga la asignatura a la base de datos
+                academia.cargaAsignaturaAcademia( asignatura );
+            }
+        } while ( opcion != 0 );   
+        // Se carga el aula a la base de datos Academia
         academia.cargaAulaAcademia( aula );  
     }
     
@@ -154,6 +193,7 @@ public final class GestionAcademia {
                 Asignatura asignatura = academia.mapAsignaturasAcademia.get( opcion );
                 alumno.cargaAsignatura( asignatura );
                 // Añadir el alumno a la asignatura
+                asignatura.cargaAlumno( alumno );
                 // Se carga la asignatura con el alumno añadido a la base de datos de academia
                 academia.cargaAsignaturaAcademia( asignatura );
             }
@@ -234,12 +274,46 @@ public final class GestionAcademia {
         System.out.println();
     }
 
-    private void mostrarAsignaturasProfesor() {
+    private void mostrarAsignaturasProfesor( ) {
+        int codigo;
+        Iterator coleccionProfesores = academia.mapProfesoresAcademia.entrySet().iterator(); 
+        if ( !coleccionProfesores.hasNext() ) {
+           System.out.println( "\nNO HAY PROFESORES\n" );
+           return;
+        } 
         
+        mostrarProfesores();
+        
+        System.out.println( "ESCRIBA EL CÓDIGO DEL PROFESOR: " ); 
+        codigo = entrada.nextInt();
+        
+        if (  academia.mapProfesoresAcademia.containsKey( codigo )) {
+            Profesor profesor = academia.mapProfesoresAcademia.get( codigo );
+            profesor.mostrarAsignaturas();    
+        } 
+        
+        System.out.println();    
     }
 
     private void mostrarAsignaturasAula() {
+        String codigo;
+        Iterator coleccionAulas = academia.mapAulasAcademia.entrySet().iterator(); 
+        if ( !coleccionAulas.hasNext() ) {
+           System.out.println( "\nNO HAY AULAS\n" );
+           return;
+        } 
         
+        mostrarAulas();
+        
+        System.out.println( "ESCRIBA EL CÓDIGO DEL AULA: " ); 
+        codigo = entrada.next();
+        
+        if (  academia.mapAulasAcademia.containsKey( codigo )) {
+            Aula aula = academia.mapAulasAcademia.get( codigo );
+            aula.mostrarAsignaturas();    
+        } 
+        
+        System.out.println();     
     }
 
     private void mostrarAlumnosProfesor() {

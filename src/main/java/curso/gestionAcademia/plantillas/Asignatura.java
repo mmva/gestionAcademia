@@ -12,6 +12,7 @@ public class Asignatura implements MetodosAlumno {
     private int horasSemana;
     private String idAula;
     private Set<Alumno> setAlumnos;
+    private Profesor profesor;
     
     // Constructor
     public Asignatura(String nombre, String tipo, int horasSemana){
@@ -41,6 +42,14 @@ public class Asignatura implements MetodosAlumno {
 
     public String getIdAula() {
         return idAula;
+    }
+    
+    public Profesor getProfesor() {
+        return this.profesor;
+    }
+    
+    public void setProfesor( Profesor profesor ) {
+        this.profesor = profesor;
     }
 
     // Establecemos el aula
