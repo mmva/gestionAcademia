@@ -9,7 +9,7 @@ public class Aula implements MetodosAsignaturas {
     private String idAula;
     private int capacidad;
     private boolean tieneProyector;
-    Set<Asignatura> asignaturasAula;
+    private Set<Asignatura> asignaturasAula;
     
     public Aula( int capacidad, boolean tieneProyector ){
         this.capacidad = capacidad;
@@ -19,7 +19,7 @@ public class Aula implements MetodosAsignaturas {
     }
 
     public String getIdAula() {
-        return idAula;
+        return this.idAula;
     }
     
     public int getCapacidad() {

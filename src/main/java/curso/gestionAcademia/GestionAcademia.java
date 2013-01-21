@@ -14,10 +14,10 @@ public final class GestionAcademia {
     public GestionAcademia() {
         academia = new Academia();
         entrada = new Scanner( System.in );
-        academia.cargaAlumnoAcademia( new Alumno( "Alberto", "Csdfdsf" ) );
+        /*academia.cargaAlumnoAcademia( new Alumno( "Alberto", "Csdfdsf" ) );
         academia.cargaProfesorAcademia( new Profesor( "Juan", "sdsddddddd" ) );
         academia.cargaAulaAcademia( new Aula( 25, true ) ); 
-        academia.cargaAsignaturaAcademia( new Asignatura( "Java", "INF", 50 ) ); 
+        academia.cargaAsignaturaAcademia( new Asignatura( "Java", "INF", 50 ) ); */
         mostrarMenu();
     }
     
@@ -35,6 +35,11 @@ public final class GestionAcademia {
             System.out.println( "6.- Mostrar profesor/es" );
             System.out.println( "7.- Mostrar aula/s" );
             System.out.println( "8.- Mostrar alumno/s" );
+            System.out.println( "9.- Asignaturas de un profesor" );
+            System.out.println( "10.- Asignaturas de un aula" );
+            System.out.println( "11.- Alumnos de un profesor" );
+            System.out.println( "12.- Alumnos de una asignatura" );
+            System.out.println( "13.- Aulas libres a una hora" );
             System.out.println( "\n0.- Salir" );
             System.out.print( "\nSELECCIONE UNA OPCION: " );
             opcion = entrada.nextInt();
@@ -78,6 +83,21 @@ public final class GestionAcademia {
             case 8:
                 mostrarAlumnos();
                 break;
+            case 9:
+                mostrarAsignaturasProfesor();
+                break;
+            case 10:
+                mostrarAsignaturasAula();
+                break;
+            case 11:
+                mostrarAlumnosProfesor();
+                break;
+            case 12:
+                mostrarAlumnosAsignatura();
+                break;
+            case 13:
+                mostrarAulasLibresHora();
+                break;
         }
     }
     
@@ -98,7 +118,7 @@ public final class GestionAcademia {
         System.out.print( "Introduzaca un nombre: " );
         String nombreProfesor = entrada.next();
         System.out.print( "Introduzaca una direccion " );
-        String direccionProfesor = entrada.nextLine();
+        String direccionProfesor = entrada.next();
         Profesor profesor = new Profesor( nombreProfesor, direccionProfesor );
         academia.cargaProfesorAcademia( profesor );  
     }
@@ -191,7 +211,7 @@ public final class GestionAcademia {
         while ( coleccionAulas.hasNext() ) {
             Map.Entry e = (Map.Entry)coleccionAulas.next();
             Aula aula = (Aula)e.getValue();
-            System.out.println( "\n" + e.getKey() + "\t" + aula.getCapacidad() + "\t" + aula.getTieneProyector() );
+            System.out.println( "\n" + e.getKey() + "\t" + aula.getCapacidad() + "\t\t" + aula.getTieneProyector() );
         }
         System.out.println();
     }
@@ -212,5 +232,25 @@ public final class GestionAcademia {
             System.out.println( "\n" + e.getKey() + "\t" + alumno.getNombre() + "\t" + alumno.getDireccion() );
         }
         System.out.println();
+    }
+
+    private void mostrarAsignaturasProfesor() {
+        
+    }
+
+    private void mostrarAsignaturasAula() {
+        
+    }
+
+    private void mostrarAlumnosProfesor() {
+        
+    }
+
+    private void mostrarAlumnosAsignatura() {
+        
+    }
+
+    private void mostrarAulasLibresHora() {
+       
     }
 }
