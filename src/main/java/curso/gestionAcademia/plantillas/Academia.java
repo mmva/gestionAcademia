@@ -5,13 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Academia implements ElementosAcademia{
-    Integer idAcademia;
-    String nombreAcademia;
-    String direccionAcademia;
-    Map<Integer, Asignatura> mapAsignaturasAcademia;
-    Map<String, Aula> mapAulasAcademia;
-    Map<Integer, Alumno> mapAlumnosAcademia;
-    Map<Integer, Profesor> mapProfesoresAcademia;
+    private Integer idAcademia;
+    private String nombreAcademia;
+    private String direccionAcademia;
+    public Map<Integer, Asignatura> mapAsignaturasAcademia;
+    public Map<String, Aula> mapAulasAcademia;
+    public Map<Integer, Alumno> mapAlumnosAcademia;
+    public Map<Integer, Profesor> mapProfesoresAcademia;
     
     public Academia(){
         this.mapAlumnosAcademia = new HashMap<Integer, Alumno>();
@@ -40,7 +40,7 @@ public class Academia implements ElementosAcademia{
         this.mapAsignaturasAcademia.remove(idAcademia);
     }
 
-    public void eliminaAulaAcademia(Integer idAula) {
+    public void eliminaAulaAcademia( String idAula) {
         this.mapAulasAcademia.remove(idAula);
     }
 
@@ -50,6 +50,5 @@ public class Academia implements ElementosAcademia{
 
     public void eliminaProfesorAcademia(Integer idProfesor) {
         this.mapProfesoresAcademia.remove(idProfesor);
-    }
-    
+    } 
 }

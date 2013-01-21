@@ -6,18 +6,28 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Aula implements MetodosAsignaturas {
-    String idAula;
-    int capacidad;
-    boolean tieneProyector;
-    Set asignaturasAula;
+    private String idAula;
+    private int capacidad;
+    private boolean tieneProyector;
+    Set<Asignatura> asignaturasAula;
     
-    public Aula(){
+    public Aula( int capacidad, boolean tieneProyector ){
+        this.capacidad = capacidad;
+        this.tieneProyector = tieneProyector;
         this.idAula = Secuencial.getSecuencialAula();
         this.asignaturasAula = new HashSet();
     }
 
     public String getIdAula() {
         return idAula;
+    }
+    
+    public int getCapacidad() {
+        return this.capacidad;
+    }
+    
+    public boolean getTieneProyector() {
+        return this.tieneProyector;
     }
 
     public void cargaAsignatura(Asignatura asignatura) {

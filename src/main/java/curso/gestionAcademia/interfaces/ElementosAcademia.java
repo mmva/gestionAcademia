@@ -12,7 +12,7 @@ public interface ElementosAcademia {
     public abstract void cargaProfesorAcademia(Profesor profesor);
     
     public abstract void eliminaAsignaturaAcademia(Integer idAcademia);
-    public abstract void eliminaAulaAcademia(Integer idAula);
+    public abstract void eliminaAulaAcademia(String idAula);
     public abstract void eliminaAlumnoAcademia(Integer idAlumno);
     public abstract void eliminaProfesorAcademia(Integer idProfesor);    
 }
