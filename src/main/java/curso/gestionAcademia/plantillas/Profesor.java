@@ -19,6 +19,10 @@ public class Profesor extends Persona implements MetodosAsignaturas {
         return idProfesor;
     }
     
+    public Set<Asignatura> getAsignaturas() {
+        return this.setAsignatura;
+    }
+    
     public void mostrarAsignaturas() {
         System.out.println( "\nASIGNATURAS PROFESOR" ); 
         System.out.println( "\nid\tnombre\ttipo\thoras semanales" ); 

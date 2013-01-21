@@ -317,11 +317,50 @@ public final class GestionAcademia {
     }
 
     private void mostrarAlumnosProfesor() {
+        int codigo;
+        Iterator coleccionProfesores = academia.mapProfesoresAcademia.entrySet().iterator(); 
+        if ( !coleccionProfesores.hasNext() ) {
+           System.out.println( "\nNO HAY PROFESORES\n" );
+           return;
+        } 
         
+        mostrarProfesores();
+        
+        System.out.println( "ESCRIBA EL CÓDIGO DEL PROFESOR: " ); 
+        codigo = entrada.nextInt();
+        
+        if (  academia.mapProfesoresAcademia.containsKey( codigo )) {
+            Profesor profesor = academia.mapProfesoresAcademia.get( codigo );
+            // Obtengo las asignaturas del profesor y muestro los alumnos
+            Set<Asignatura> asignaturas = profesor.getAsignaturas();
+            for ( Asignatura asig : asignaturas ) {
+                asig.mostrarAlumnos();
+            }
+        } 
+        
+        System.out.println();        
     }
 
     private void mostrarAlumnosAsignatura() {
+        int codigo;
+        Iterator coleccionAsignaturas = academia.mapAsignaturasAcademia.entrySet().iterator(); 
+        if ( !coleccionAsignaturas.hasNext() ) {
+           System.out.println( "\nNO HAY ASIGNATURAS\n" );
+           return;
+        } 
         
+        mostrarAsignaturas();
+        
+        System.out.println( "ESCRIBA EL CÓDIGO DE LA ASIGNATURA: " ); 
+        codigo = entrada.nextInt();
+        
+        if (  academia.mapAsignaturasAcademia.containsKey( codigo )) {
+            Asignatura asignatura = academia.mapAsignaturasAcademia.get( codigo );
+            // Muestro los alumnos de la asignatura elegida
+            asignatura.mostrarAlumnos();
+        } 
+        
+        System.out.println();      
     }
 
     private void mostrarAulasLibresHora() {
